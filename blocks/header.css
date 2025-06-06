@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  justify-items: center;
+  border-bottom: 1px solid grey;
+}
+.logo {
+  padding: 35px 0;
+}

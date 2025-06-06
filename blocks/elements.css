@@ -1,0 +1,145 @@
+.elements {
+  padding: 35px 0 0;
+}
+.elements__container {
+  display: grid;
+  width: 100%;
+  object-fit: cover;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas:
+    "elements-1 elements-2 elements-3"
+    "elements-4 elements-5 elements-6";
+  gap: 16px;
+  justify-content: center;
+}
+.elements__like-btn {
+  background-image: url(../images/like.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 20px;
+  aspect-ratio: 1/1;
+  align-self: center;
+  border: none;
+}
+.elements__like-btn:hover {
+  background-image: url(../images/like-hover.png);
+}
+.elements__like-btn:active {
+  background-image: url(../images/llike-on.png);
+}
+.elements__pic-1 {
+  grid-area: elements-1;
+  width: 262px;
+  object-fit: contain;
+}
+.elements__yosemite-text-box {
+  grid-area: elements-1;
+  display: flex;
+  gap: 10px;
+  align-self: flex-end;
+  justify-self: center;
+}
+.elements__yosemite-text {
+  color: black;
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+}
+.elements__louise-text-box {
+  grid-area: elements-2;
+  display: flex;
+  gap: 10px;
+  align-self: flex-end;
+  justify-self: center;
+}
+.elements__louise-text {
+  color: black;
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+}
+.elements__calvas-text-box {
+  grid-area: elements-3;
+  display: flex;
+  gap: 10px;
+  align-self: flex-end;
+  justify-self: center;
+}
+.elements__calvas-text {
+  color: black;
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+}
+.elements__latemar-text-box {
+  grid-area: elements-4;
+  display: flex;
+  gap: 10px;
+  align-self: flex-end;
+  justify-self: center;
+}
+.elements__latemar-text {
+  color: black;
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+}
+.elements__vanois-text-box {
+  grid-area: elements-5;
+  display: flex;
+  gap: 10px;
+  align-self: flex-end;
+  justify-self: center;
+}
+.elements__vanois-text {
+  color: black;
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+}
+.elements__braies-text-box {
+  grid-area: elements-6;
+  display: flex;
+  gap: 10px;
+  align-self: flex-end;
+  justify-self: center;
+}
+.elements__braies-text {
+  color: black;
+  font-family: "Inter";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 100%;
+}
+.elements__pic-2 {
+  grid-area: elements-2;
+  width: 262px;
+  object-fit: contain;
+}
+.elements__pic-3 {
+  grid-area: elements-3;
+  width: 262px;
+  object-fit: contain;
+}
+.elements__pic-4 {
+  grid-area: elements-4;
+  width: 262px;
+  object-fit: contain;
+}
+.elements__pic-5 {
+  grid-area: elements-5;
+  width: 262px;
+  object-fit: contain;
+}
+.elements__pic-6 {
+  grid-area: elements-6;
+  width: 262px;
+  object-fit: contain;
+}

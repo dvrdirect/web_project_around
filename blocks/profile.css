@@ -1,0 +1,68 @@
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+}
+.profile__pic {
+  width: 120px;
+  height: 120px;
+}
+.profile__info {
+  display: grid;
+  grid-template-areas:
+    "profile__name profile__edit-btn"
+    "profile__ocp .";
+  gap: 10px;
+  position: relative;
+  right: 15px;
+}
+
+.profile__name {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: white;
+  grid-area: profile__name;
+  margin: 0;
+}
+.profile__ocp {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: white;
+  grid-area: profile__ocp;
+}
+.profile__edit-btn {
+  grid-area: profile__edit-btn;
+  align-self: center;
+  background-image: url(../images/edit.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: black;
+  width: 24px;
+  aspect-ratio: 1/1;
+  border: none;
+}
+.profile__edit-btn:hover {
+  background-image: url(../images/edit-hover.png);
+  border: none;
+}
+.profile__add-btn {
+  background-image: url(../images/add.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: black;
+  width: 150px;
+  height: 50px;
+  border: none;
+}
+.profile__add-btn:hover {
+  background-image: url(../images/addhover.png);
+  border: none;
+}
