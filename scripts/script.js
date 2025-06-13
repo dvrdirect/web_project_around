@@ -11,18 +11,20 @@ function closePopup() {
 }
 editBtn.addEventListener("click", openPopup);
 closeBtn.addEventListener("click", closePopup);
-let nombre = document.querySelector(".profile__name");
-let campoNombre = document.getElementById("nombre");
-campoNombre.value = nombre.textContent;
-let about = document.querySelector(".profile__ocp");
-let campoAbout = document.getElementById("about");
-campoAbout.value = about.textContent;
 
-campoNombre.addEventListener("input", (nombre.textContent = campoNombre.value));
-campoAbout.addEventListener("input", (about.textContent = campoAbout.value));
+let profileName = document.querySelector("#profile-name");
+let profileOcp = document.querySelector("#profile-ocupation");
 
-let formBtn = document.querySelector(".popup__btn");
-function handleProfileInfoSubmit(evt) {
+let formElement = document.querySelector("#formulario");
+
+function profileSubmit(evt) {
   evt.preventDefault();
+  let inputName = document.querySelector("#nombre");
+  let inputOcp = document.querySelector("#about");
+
+  profileName.textContent = inputName.value;
+  profileOcp.textContent = inputOcp.value;
 }
-formBtn.addEventListener("submit", handleProfileInfoSubmit);
+
+formElement.addEventListener("submit", profileSubmit);
+formElement.addEventListener("submit", closePopup);

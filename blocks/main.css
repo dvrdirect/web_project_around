@@ -11,3 +11,13 @@ body {
   padding: 0 150px;
   margin: 0;
 }
+@media (max-width: 576px) {
+  .page {
+    padding: 0;
+  }
+}
+@media (max-width: 500px) {
+  .page {
+    overflow: hidden;
+  }
+}
