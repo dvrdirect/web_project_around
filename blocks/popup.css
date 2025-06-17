@@ -120,3 +120,13 @@
     left: 15px;
   }
 }
+@media (max-width: 320px) {
+  .popup_opened {
+    position: absolute;
+    left: 35px;
+  }
+  .popup__close {
+    position: absolute;
+    right: 0;
+  }
+}
