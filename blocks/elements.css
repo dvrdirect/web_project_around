@@ -143,10 +143,10 @@
   width: 262px;
   object-fit: contain;
 }
-@media (max-width: 1280px) {
+@media (min-width: 834px) {
   .elements__container {
     grid-template-columns: auto;
-    gap: 8px;
+    gap: 12px;
   }
   .elements__like-btn {
     width: auto;
