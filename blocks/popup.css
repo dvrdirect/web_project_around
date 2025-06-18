@@ -1,6 +1,10 @@
 .popup {
   display: none;
 }
+.popup__container {
+  display: flex;
+  justify-items: center;
+}
 .popup_opened {
   background-color: white;
   height: 297px;

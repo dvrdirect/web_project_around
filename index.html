@@ -7,7 +7,12 @@
     <meta name="description" content="Around photo web page" />
     <meta name="keywords" content="photo-gallery, web-page" />
     <title>Around</title>
-    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
@@ -126,37 +131,37 @@
           </div>
         </section>
       </main>
-
-      <form class="popup" id="formulario">
-        <img
-          class="popup__close"
-          src="./images/close-icon.png"
-          alt="close-icon"
-        />
-        <h2 class="popup__title">Editar Perfil</h2>
-        <fieldset class="popup__form">
-          <label for="nombre" class="popup__form-label">
-            <input
-              type="text"
-              id="nombre"
-              class="popup__form-item"
-              placeholder="Nombre"
-              required
-            />
-          </label>
-          <label for="about" class="popup__form-label">
-            <input
-              type="text"
-              id="about"
-              class="popup__form-item"
-              placeholder="Acerca de mí"
-              required
-            />
-          </label>
-        </fieldset>
-        <button type="submit" class="popup__btn">Guardar</button>
-      </form>
-
+      <div class="popup__container">
+        <form class="popup" id="formulario">
+          <img
+            class="popup__close"
+            src="./images/close-icon.png"
+            alt="close-icon"
+          />
+          <h2 class="popup__title">Editar Perfil</h2>
+          <fieldset class="popup__form">
+            <label for="nombre" class="popup__form-label">
+              <input
+                type="text"
+                id="nombre"
+                class="popup__form-item"
+                placeholder="Nombre"
+                required
+              />
+            </label>
+            <label for="about" class="popup__form-label">
+              <input
+                type="text"
+                id="about"
+                class="popup__form-item"
+                placeholder="Acerca de mí"
+                required
+              />
+            </label>
+          </fieldset>
+          <button type="submit" class="popup__btn">Guardar</button>
+        </form>
+      </div>
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
     <script src="./scripts/index.js"></script>
