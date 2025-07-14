@@ -18,6 +18,7 @@
   flex-wrap: wrap;
   padding: 0 25px;
   border-radius: 10px;
+  z-index: 2;
 }
 .popup__close {
   position: absolute;
