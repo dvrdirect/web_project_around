@@ -19,6 +19,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  background-color: transparent;
   width: 20px;
   aspect-ratio: 1/1;
   align-self: center;
@@ -192,6 +193,71 @@
   width: 262px;
   object-fit: contain;
 }
+.elements__trash {
+  position: relative;
+  left: 240px;
+  bottom: -40px;
+  z-index: 3;
+  background-image: url(../images/Trash.png);
+  background-color: transparent;
+  height: 20px;
+  aspect-ratio: 1/1;
+  align-self: center;
+  border: none;
+}
+.elements__trash:hover {
+  background-image: url(../images/botonDeletee.png);
+  background-color: transparent;
+}
+.elements__zoom-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.elements__zoom-img-container {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+}
+.elements__zoom-img {
+  display: block;
+  border-radius: 8px;
+  max-width: 75vw;
+  max-height: 75vh;
+  margin: 0 auto;
+  object-fit: contain;
+  position: relative;
+}
+.elements__zoom-caption {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 12px;
+  color: white;
+  line-height: 100%;
+  position: absolute;
+  bottom: -40px;
+  left: 10px;
+  z-index: 5;
+}
+.elements__close-btn {
+  position: absolute;
+  top: -28px;
+  right: -28px;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 5;
+}
 @media (min-width: 834px) {
   .elements__container {
     grid-template-columns: auto;
@@ -239,5 +305,8 @@
 @media (max-width: 366px) {
   .elements {
     padding-right: 15px;
+  }
+  .elements__zoom-container {
+    left: -15px;
   }
 }
