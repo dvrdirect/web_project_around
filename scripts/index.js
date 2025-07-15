@@ -106,35 +106,36 @@ addButton.addEventListener("click", showDisplay);
 cardFormClose.addEventListener("click", removeDisplay);
 
 //Agregar tarjetas
-const addTitle = cardForm.querySelector(".card__add-title");
-const addLink = cardForm.querySelector(".card__form-link");
+const addTitle = cardForm.querySelector("#card__add-title");
+const addLink = cardForm.querySelector("#card__form-link");
 const createBtn = cardForm.querySelector(".card__form-button");
 
-function renderCard(data) {
-  const card = document.createElement("div");
-  card.classList.add("elements__card");
-  card.style.gridArea = data.gridArea;
+function renderAllCards() {
+  container.innerHTML = "";
 
-  card.innerHTML = `
-  <div class="elements__image-container">
-  <img
-      class="elements__rectangle"
-      src="./images/Rectangle.png"
-      alt="Decoración"
-    />
-  <img src="${data.link}" alt"${data.name}" class="elements__pic"/>
-  </div>
-  <div class="elements__text-box">
-    <p class="elements__text">${data.name}</p>
-    <button class="elements__like-btn"></button>
-  </div>
-`;
-  const likeButton = card.querySelector(".elements__like-btn");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("elements__like-btn_active");
+  initialCards.forEach((card) => {
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("elements__card");
+    cardElement.style.gridArea = card.gridArea;
+
+    cardElement.innerHTML = `
+      <div class="elements__image-container">
+        <img class="elements__rectangle" src="./images/Rectangle.png" alt="Decoración" />
+        <img src="${card.link}" alt="${card.name}" class="elements__pic" />
+      </div>
+      <div class="elements__text-box">
+        <p class="elements__text">${card.name}</p>
+        <button class="elements__like-btn"></button>
+      </div>
+    `;
+
+    const likeButton = cardElement.querySelector(".elements__like-btn");
+    likeButton.addEventListener("click", () => {
+      likeButton.classList.toggle("elements__like-btn_active");
+    });
+
+    container.appendChild(cardElement);
   });
-
-  container.appendChild(card);
 }
 
 createBtn.addEventListener("click", function (event) {
@@ -155,8 +156,7 @@ createBtn.addEventListener("click", function (event) {
     initialCards.forEach((card, index) => {
       card.gridArea = `elements-${index + 1}`;
     });
-    renderCard(newCard);
-    console.log("Nuevo card agregado:", newCard);
+    renderAllCards();
 
     cardForm.reset();
     removeDisplay();
@@ -173,3 +173,4 @@ likeBtn.forEach((btn) => {
     btn.classList.toggle("elements__like-btn_active");
   });
 });
+console.log(initialCards);
