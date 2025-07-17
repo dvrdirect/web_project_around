@@ -307,7 +307,7 @@
 }
 @media (max-width: 366px) {
   .elements {
-    padding-right: 15px;
+    padding: right 0;
   }
   .elements__zoom-container {
     left: -15px;
