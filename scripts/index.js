@@ -89,7 +89,7 @@ const addTitle = cardForm.querySelector("#card__add-title");
 const addLink = cardForm.querySelector("#card__form-link");
 const createBtn = cardForm.querySelector(".card__form-button");
 
-function renderAllCards() {
+/*function renderAllCards() {
   container.innerHTML = "";
 
   initialCards.forEach((card, index) => {
@@ -122,7 +122,7 @@ function renderAllCards() {
       renderAllCards(); // Re-renderiza vista
     });
 
-    // ✅ Botón de like
+    // Botón de like
     const likeButton = cardElement.querySelector(".elements__like-btn");
     likeButton.addEventListener("click", () => {
       likeButton.classList.toggle("elements__like-btn_active");
@@ -135,9 +135,10 @@ function renderAllCards() {
 
     container.appendChild(cardElement);
   });
-}
+}*/
 
-function imageZoom(card) {
+//Comentario en caso de que no funcione sin innerHTML
+/*function imageZoom(card) {
   const zoomOverlay = document.querySelector(".elements__zoom-overlay");
 
   zoomOverlay.innerHTML = `
@@ -155,6 +156,122 @@ function imageZoom(card) {
   closeBtn.addEventListener("click", () => {
     zoomOverlay.innerHTML = "";
   });
+}*/
+
+function renderAllCards() {
+  container.innerHTML = "";
+
+  initialCards.forEach((card, index) => {
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("elements__card");
+    cardElement.style.gridArea = card.gridArea;
+
+    //  Botón de eliminar
+    const trashButton = document.createElement("button");
+    trashButton.classList.add("elements__trash");
+
+    //  Contenedor de imágenes
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("elements__image-container");
+
+    const rectangle = document.createElement("img");
+    rectangle.classList.add("elements__rectangle");
+    rectangle.src = "./images/Rectangle.png";
+    rectangle.alt = "Decoración";
+
+    const pic = document.createElement("img");
+    pic.classList.add("elements__pic");
+    pic.src = card.link;
+    pic.alt = card.name;
+
+    imageContainer.appendChild(rectangle);
+    imageContainer.appendChild(pic);
+
+    // Texto y botón de like
+    const textBox = document.createElement("div");
+    textBox.classList.add("elements__text-box");
+
+    const text = document.createElement("p");
+    text.classList.add("elements__text");
+    text.textContent = card.name;
+
+    const likeButton = document.createElement("button");
+    likeButton.classList.add("elements__like-btn");
+
+    textBox.appendChild(text);
+    textBox.appendChild(likeButton);
+
+    //  Ensamblar tarjeta
+    cardElement.appendChild(trashButton);
+    cardElement.appendChild(imageContainer);
+    cardElement.appendChild(textBox);
+
+    //  Eliminar tarjeta
+    trashButton.addEventListener("click", () => {
+      initialCards.splice(index, 1);
+      initialCards.forEach((item, i) => {
+        item.gridArea = `elements-${i + 1}`;
+      });
+      renderAllCards();
+    });
+
+    //  Botón de like
+    likeButton.addEventListener("click", () => {
+      likeButton.classList.toggle("elements__like-btn_active");
+    });
+
+    //  Zoom
+    pic.addEventListener("click", () => {
+      imageZoom(card);
+    });
+
+    container.appendChild(cardElement);
+  });
+}
+
+function imageZoom(card) {
+  const zoomOverlay = document.querySelector(".elements__zoom-overlay");
+
+  // Limpiar el contenedor
+  zoomOverlay.textContent = ""; // o while (zoomOverlay.firstChild) zoomOverlay.removeChild(zoomOverlay.firstChild);
+
+  // Crear contenedor principal
+  const zoomContainer = document.createElement("div");
+  zoomContainer.classList.add("elements__zoom-container");
+
+  // Crear contenedor de imagen
+  const zoomImgContainer = document.createElement("div");
+  zoomImgContainer.classList.add("elements__zoom-img-container");
+
+  // Crear imagen principal
+  const zoomImg = document.createElement("img");
+  zoomImg.classList.add("elements__zoom-img");
+  zoomImg.src = card.link;
+  zoomImg.alt = card.name;
+
+  // Crear botón de cerrar
+  const closeBtn = document.createElement("img");
+  closeBtn.classList.add("elements__close-btn");
+  closeBtn.src = "./images/close-icon.png";
+  closeBtn.alt = "close-btn";
+
+  // Crear leyenda
+  const caption = document.createElement("h3");
+  caption.classList.add("elements__zoom-caption");
+  caption.textContent = card.name;
+
+  // Asociar evento de cierre
+  closeBtn.addEventListener("click", () => {
+    zoomOverlay.textContent = "";
+  });
+
+  // Ensamblar todo
+  zoomImgContainer.appendChild(zoomImg);
+  zoomImgContainer.appendChild(closeBtn);
+  zoomImgContainer.appendChild(caption);
+
+  zoomContainer.appendChild(zoomImgContainer);
+  zoomOverlay.appendChild(zoomContainer);
 }
 
 renderAllCards();
