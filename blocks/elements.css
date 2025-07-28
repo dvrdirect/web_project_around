@@ -35,6 +35,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+  cursor: pointer;
 }
 /* Clases para el array*/
 .elements__pic {

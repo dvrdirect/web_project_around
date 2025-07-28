@@ -30,8 +30,10 @@
   flex-direction: column;
   gap: 10px;
 }
-.card__form-label {
+.card__form-label input {
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
   border-bottom: 1px solid grey;
 }
 .card__add-title {
@@ -45,6 +47,7 @@
   line-height: 100%;
   color: #c4c4c4;
   border: none;
+
   padding-bottom: 15px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -64,6 +67,17 @@
 .card__form-button:hover {
   background-color: grey;
 }
+.card__form-button:disabled {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: rgba(196, 196, 196, 1);
+  background-color: white;
+  text-align: center;
+  width: 100%;
+  height: 45px;
+}
 .card__close-btn {
   position: absolute;
   top: -45px;
@@ -71,6 +85,26 @@
 }
 .card__close-btn:hover {
   content: url(../images/close-iconhover.png);
+}
+.card__input-error {
+  border-bottom: 1px solid red;
+  width: 100%;
+}
+.card__form-error-msg {
+  font-family: "Inter";
+  font-weight: 400;
+  color: red;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  line-height: 1.2;
+}
+.card__form-error-msg::after,
+.card__form-error-msg::before {
+  content: none;
 }
 @media (min-width: 1200px) {
   .card__form-active {

@@ -1,17 +1,25 @@
-// Boton de editar y cerrar perfil
-let popup = document.querySelector(".popup");
-let editBtn = document.querySelector(".profile__edit-btn");
-let closeBtn = popup.querySelector(".popup__close");
+const popup = document.querySelector("#formulario");
+const content = popup.querySelector(".popup__form");
+const editBtn = document.querySelector(".profile__edit-btn");
+const closeBtn = popup.querySelector(".popup__close");
+
 function openPopup() {
-  popup.classList.remove("popup");
   popup.classList.add("popup_opened");
 }
+
 function closePopup() {
   popup.classList.remove("popup_opened");
-  popup.classList.add("popup");
 }
+
 editBtn.addEventListener("click", openPopup);
 closeBtn.addEventListener("click", closePopup);
+
+// Esta es la única que necesitas
+popup.addEventListener("click", (e) => {
+  if (!content.contains(e.target)) {
+    closePopup();
+  }
+});
 
 // Cambiar los datos de la profile-form
 let profileName = document.querySelector("#profile-name");
@@ -89,75 +97,6 @@ const addTitle = cardForm.querySelector("#card__add-title");
 const addLink = cardForm.querySelector("#card__form-link");
 const createBtn = cardForm.querySelector(".card__form-button");
 
-/*function renderAllCards() {
-  container.innerHTML = "";
-
-  initialCards.forEach((card, index) => {
-    const cardElement = document.createElement("div");
-    cardElement.classList.add("elements__card");
-    cardElement.style.gridArea = card.gridArea;
-
-    cardElement.innerHTML = `
-      <button class="elements__trash"></button>
-      <div class="elements__image-container">
-        <img class="elements__rectangle" src="./images/Rectangle.png" alt="Decoración" />
-        <img src="${card.link}" alt="${card.name}" class="elements__pic" />
-      </div>
-      <div class="elements__text-box">
-        <p class="elements__text">${card.name}</p>
-        <button class="elements__like-btn"></button>
-      </div>
-    `;
-
-    // ✅ Lógica para eliminar tarjeta
-    const trashButton = cardElement.querySelector(".elements__trash");
-    trashButton.addEventListener("click", () => {
-      initialCards.splice(index, 1); // Elimina del array
-
-      // Reasigna gridArea
-      initialCards.forEach((item, i) => {
-        item.gridArea = `elements-${i + 1}`;
-      });
-
-      renderAllCards(); // Re-renderiza vista
-    });
-
-    // Botón de like
-    const likeButton = cardElement.querySelector(".elements__like-btn");
-    likeButton.addEventListener("click", () => {
-      likeButton.classList.toggle("elements__like-btn_active");
-    });
-
-    const img = cardElement.querySelector(".elements__pic");
-    img.addEventListener("click", () => {
-      imageZoom(card); // activa el zoom al hacer click
-    });
-
-    container.appendChild(cardElement);
-  });
-}*/
-
-//Comentario en caso de que no funcione sin innerHTML
-/*function imageZoom(card) {
-  const zoomOverlay = document.querySelector(".elements__zoom-overlay");
-
-  zoomOverlay.innerHTML = `
-    <div class="elements__zoom-container">
-      <div class="elements__zoom-img-container">
-        <img src="${card.link}" alt="${card.name}" class="elements__zoom-img" />
-        <img src="./images/close-icon.png" alt="close-btn" class="elements__close-btn" />
-        <h3 class="elements__zoom-caption">${card.name}</h3>
-      </div>
-
-    </div>
-  `;
-  // 👉 Evento del botón cerrar
-  const closeBtn = zoomOverlay.querySelector(".elements__close-btn");
-  closeBtn.addEventListener("click", () => {
-    zoomOverlay.innerHTML = "";
-  });
-}*/
-
 function renderAllCards() {
   container.innerHTML = "";
 
@@ -233,7 +172,7 @@ function imageZoom(card) {
   const zoomOverlay = document.querySelector(".elements__zoom-overlay");
 
   // Limpiar el contenedor
-  zoomOverlay.textContent = ""; // o while (zoomOverlay.firstChild) zoomOverlay.removeChild(zoomOverlay.firstChild);
+  zoomOverlay.textContent = "";
 
   // Crear contenedor principal
   const zoomContainer = document.createElement("div");
@@ -272,6 +211,10 @@ function imageZoom(card) {
 
   zoomContainer.appendChild(zoomImgContainer);
   zoomOverlay.appendChild(zoomContainer);
+
+  zoomOverlay.addEventListener("click", (e) => {
+    zoomOverlay.textContent = "";
+  });
 }
 
 renderAllCards();
@@ -300,4 +243,89 @@ createBtn.addEventListener("click", function (event) {
   } else {
     console.log("Faltan datos en el formulario");
   }
+});
+
+// Juntando las forms
+
+const allForms = document.querySelectorAll("form");
+
+//Funciones de validación
+
+const showInputError = (input) => {
+  input.classList.add("card__input-error");
+
+  const errorSpan = input.parentElement.querySelector(
+    ".card__form-error-msg, .popup__form-error-msg"
+  );
+
+  if (errorSpan) {
+    if (input.validity.valueMissing) {
+      errorSpan.textContent = "Por favor, rellena este campo";
+    } else if (input.validity.tooShort || input.validity.tooLong) {
+      errorSpan.textContent = `Debe tener mínimo ${input.minLength} caracteres. Actualmente tienes 1 Caracter`;
+    } else if (input.validity.typeMismatch && input.type === "url") {
+      errorSpan.textContent = "Por favor, introduce una dirección web";
+    } else {
+      errorSpan.textContent = input.validationMessage || "Campo inválido";
+    }
+  }
+};
+
+const hideInputError = (input) => {
+  input.classList.remove("card__input-error");
+
+  const errorSpan = input.parentElement.querySelector(
+    ".card__form-error-msg, .popup__form-error-msg"
+  );
+
+  if (errorSpan) {
+    errorSpan.textContent = "";
+  }
+};
+
+const isValid = (form) => {
+  const inputs = form.querySelectorAll("input");
+  const submitBtn = form.querySelector("button[type='submit']");
+
+  let formIsValid = true;
+
+  inputs.forEach((input) => {
+    if (input.value.trim() === "") {
+      formIsValid = false;
+      hideInputError(input);
+    } else if (!input.validity.valid) {
+      formIsValid = false;
+      showInputError(input);
+    } else {
+      hideInputError(input);
+    }
+  });
+
+  if (submitBtn) {
+    submitBtn.disabled = !formIsValid;
+  }
+};
+
+const allInputs = document.querySelectorAll("input");
+
+allInputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    const parentForm = input.closest("form");
+    if (parentForm) {
+      isValid(parentForm);
+    }
+  });
+});
+
+// Activando estilos para validación
+
+allForms.forEach((form) => {
+  form.addEventListener("submit", function (evt) {
+    evt.preventDefault();
+    isValid(form);
+  });
+});
+
+allForms.forEach((form) => {
+  isValid(form);
 });

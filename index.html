@@ -132,37 +132,43 @@
           <div class="elements__zoom-overlay"></div>
         </section>
       </main>
-
-      <form class="popup" id="formulario">
-        <img
-          class="popup__close"
-          src="./images/close-icon.png"
-          alt="close-icon"
-        />
-        <h2 class="popup__title">Editar Perfil</h2>
-        <fieldset class="popup__form">
-          <label for="nombre" class="popup__form-label">
-            <input
-              type="text"
-              id="nombre"
-              class="popup__form-item"
-              placeholder="Nombre"
-              required
-            />
-          </label>
-          <label for="about" class="popup__form-label">
-            <input
-              type="text"
-              id="about"
-              class="popup__form-item"
-              placeholder="Acerca de mí"
-              required
-            />
-          </label>
-        </fieldset>
-        <button type="submit" class="popup__btn">Guardar</button>
-      </form>
-
+      <div class="popup" id="formulario">
+        <form class="popup__form">
+          <img
+            class="popup__close"
+            src="./images/close-icon.png"
+            alt="close-icon"
+          />
+          <h2 class="popup__title">Editar Perfil</h2>
+          <fieldset class="popup__form">
+            <label for="nombre" class="popup__form-label">
+              <input
+                type="text"
+                id="nombre"
+                class="popup__form-item"
+                placeholder="Nombre"
+                minlength="2"
+                maxlength="40"
+                required
+              />
+              <span class="popup__form-error-msg"></span>
+            </label>
+            <label for="about" class="popup__form-label">
+              <input
+                type="text"
+                id="about"
+                class="popup__form-item"
+                placeholder="Acerca de mí"
+                minlength="2"
+                maxlength="200"
+                required
+              />
+              <span class="popup__form-error-msg"></span>
+            </label>
+          </fieldset>
+          <button type="submit" class="popup__btn">Guardar</button>
+        </form>
+      </div>
       <form class="card__form" id="form">
         <img
           class="card__close-btn"
@@ -178,17 +184,21 @@
               class="card__form-item"
               id="card__add-title"
               placeholder="Título"
+              minlength="2"
+              maxlength="30"
               required
             />
+            <span class="card__form-error-msg"></span>
           </label>
           <label for="card__form-link" class="card__form-label">
             <input
-              type="text"
+              type="url"
               class="card__form-item"
               id="card__form-link"
               placeholder="Enlace a la imagen"
               required
             />
+            <span class="card__form-error-msg"></span>
           </label>
         </fieldset>
         <button type="submit" class="card__form-button">Crear</button>
