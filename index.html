@@ -132,7 +132,7 @@
           <div class="elements__zoom-overlay"></div>
         </section>
       </main>
-      <div class="popup" id="formulario">
+      <div class="popup__container" id="formulario">
         <form class="popup__form">
           <img
             class="popup__close"
@@ -169,40 +169,42 @@
           <button type="submit" class="popup__btn">Guardar</button>
         </form>
       </div>
-      <form class="card__form" id="form">
-        <img
-          class="card__close-btn"
-          src="./images/close-icon.png"
-          alt="close-icon"
-          id="cerrar"
-        />
-        <h2 class="card__form-title">Nuevo lugar</h2>
-        <fieldset class="card__form-container">
-          <label for="card__add-title" class="card__form-label">
-            <input
-              type="text"
-              class="card__form-item"
-              id="card__add-title"
-              placeholder="Título"
-              minlength="2"
-              maxlength="30"
-              required
-            />
-            <span class="card__form-error-msg"></span>
-          </label>
-          <label for="card__form-link" class="card__form-label">
-            <input
-              type="url"
-              class="card__form-item"
-              id="card__form-link"
-              placeholder="Enlace a la imagen"
-              required
-            />
-            <span class="card__form-error-msg"></span>
-          </label>
-        </fieldset>
-        <button type="submit" class="card__form-button">Crear</button>
-      </form>
+      <div class="card__overlay">
+        <form class="card__form" id="form">
+          <img
+            class="card__close-btn"
+            src="./images/close-icon.png"
+            alt="close-icon"
+            id="cerrar"
+          />
+          <h2 class="card__form-title">Nuevo lugar</h2>
+          <fieldset class="card__form-container">
+            <label for="card__add-title" class="card__form-label">
+              <input
+                type="text"
+                class="card__form-item"
+                id="card__add-title"
+                placeholder="Título"
+                minlength="2"
+                maxlength="30"
+                required
+              />
+              <span class="card__form-error-msg"></span>
+            </label>
+            <label for="card__form-link" class="card__form-label">
+              <input
+                type="url"
+                class="card__form-item"
+                id="card__form-link"
+                placeholder="Enlace a la imagen"
+                required
+              />
+              <span class="card__form-error-msg"></span>
+            </label>
+          </fieldset>
+          <button type="submit" class="card__form-button">Crear</button>
+        </form>
+      </div>
 
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>

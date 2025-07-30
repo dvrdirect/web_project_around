@@ -1,4 +1,6 @@
 const popup = document.querySelector("#formulario");
+
+const zoomOverlay = document.querySelector(".elements__zoom-overlay");
 const content = popup.querySelector(".popup__form");
 const editBtn = document.querySelector(".profile__edit-btn");
 const closeBtn = popup.querySelector(".popup__close");
@@ -169,10 +171,9 @@ function renderAllCards() {
 }
 
 function imageZoom(card) {
-  const zoomOverlay = document.querySelector(".elements__zoom-overlay");
-
   // Limpiar el contenedor
   zoomOverlay.textContent = "";
+  zoomOverlay.classList.add("zoom_active");
 
   // Crear contenedor principal
   const zoomContainer = document.createElement("div");
@@ -202,6 +203,7 @@ function imageZoom(card) {
   // Asociar evento de cierre
   closeBtn.addEventListener("click", () => {
     zoomOverlay.textContent = "";
+    zoomOverlay.classList.remove("zoom_active");
   });
 
   // Ensamblar todo
@@ -214,6 +216,7 @@ function imageZoom(card) {
 
   zoomOverlay.addEventListener("click", (e) => {
     zoomOverlay.textContent = "";
+    zoomOverlay.classList.remove("zoom_active");
   });
 }
 
@@ -243,6 +246,44 @@ createBtn.addEventListener("click", function (event) {
   } else {
     console.log("Faltan datos en el formulario");
   }
+});
+
+// Tecla ESC
+
+const escapeKey = () => {
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      // Cierre del popup de perfil
+      if (popup.classList.contains("popup_opened")) {
+        closePopup();
+      }
+
+      // Cierre del formulario de tarjeta
+      if (cardForm.classList.contains("card__form-active")) {
+        removeDisplay();
+      }
+
+      // Cierre del zoom de imagen
+      if (zoomOverlay.classList.contains("zoom_active")) {
+        zoomOverlay.textContent = "";
+        zoomOverlay.classList.remove("zoom_active");
+      }
+    }
+  });
+};
+
+escapeKey();
+
+// Cerrar el popup al hacer clic fuera del formulario
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("formulario");
+  const form = popup.querySelector(".popup__form");
+
+  popup.addEventListener("mousedown", (e) => {
+    if (!form.contains(e.target)) {
+      popup.style.display = "none";
+    }
+  });
 });
 
 // Juntando las forms
