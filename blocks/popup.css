@@ -2,18 +2,64 @@
   display: none;
 }
 .popup__overlay {
+  display: none;
+}
+.popup__card-overlay {
+  display: none;
+}
+.popup__card-overlay_active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.popup__overlay_active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .popup__container {
   display: flex;
-  justify-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: white;
+  min-height: 320px;
+  min-width: 340px;
+  padding: 0 25px;
+  border-radius: 10px;
+  position: relative;
+}
+.popup__card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: white;
+  min-height: 320px;
+  min-width: 340px;
+  padding: 0 25px;
+  border-radius: 10px;
+  position: relative;
 }
 .popup_opened {
   background-color: white;
   height: 297px;
   width: 317px;
-  position: absolute;
-  top: 175px;
-  left: 409px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -24,8 +70,13 @@
 }
 .popup__close {
   position: absolute;
-  top: -45px;
-  right: -45px;
+  right: -26px;
+  top: -36px;
+  cursor: pointer;
+  z-index: 10;
+
+  width: 32px;
+  height: 32px;
 }
 .popup__close:hover {
   content: url(../images/close-iconhover.png);
@@ -36,6 +87,9 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 .popup__form-label input {
   display: flex;
@@ -62,6 +116,7 @@
   font-size: 24px;
   line-height: 100%;
   color: black;
+  align-self: center;
 }
 .popup__btn {
   font-family: "Inter";
@@ -87,6 +142,10 @@
 }
 .popup__btn:hover {
   background-color: grey;
+}
+.popup__input-error {
+  border-bottom: 1px solid red;
+  width: 100%;
 }
 .popup__form-error-msg {
   font-family: "Inter";

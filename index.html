@@ -132,82 +132,87 @@
           <div class="elements__zoom-overlay"></div>
         </section>
       </main>
-      <div class="popup__container" id="formulario">
-        <form class="popup__form">
+      <div class="popup__overlay" id="popup-overlay">
+        <div class="popup__container" id="formulario">
           <img
             class="popup__close"
             src="./images/close-icon.png"
             alt="close-icon"
           />
-          <h2 class="popup__title">Editar Perfil</h2>
-          <fieldset class="popup__form">
-            <label for="nombre" class="popup__form-label">
-              <input
-                type="text"
-                id="nombre"
-                class="popup__form-item"
-                placeholder="Nombre"
-                minlength="2"
-                maxlength="40"
-                required
-              />
-              <span class="popup__form-error-msg"></span>
-            </label>
-            <label for="about" class="popup__form-label">
-              <input
-                type="text"
-                id="about"
-                class="popup__form-item"
-                placeholder="Acerca de mí"
-                minlength="2"
-                maxlength="200"
-                required
-              />
-              <span class="popup__form-error-msg"></span>
-            </label>
-          </fieldset>
-          <button type="submit" class="popup__btn">Guardar</button>
-        </form>
+          <form class="popup__form" novalidate>
+            <h2 class="popup__title">Editar Perfil</h2>
+            <fieldset class="popup__form">
+              <label for="nombre" class="popup__form-label">
+                <input
+                  type="text"
+                  id="nombre"
+                  class="popup__form-item"
+                  placeholder="Nombre"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span class="popup__form-error-msg"></span>
+              </label>
+              <label for="about" class="popup__form-label">
+                <input
+                  type="text"
+                  id="about"
+                  class="popup__form-item"
+                  placeholder="Acerca de mí"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span class="popup__form-error-msg"></span>
+              </label>
+            </fieldset>
+            <button type="submit" class="popup__btn">Guardar</button>
+          </form>
+        </div>
       </div>
-      <div class="card__overlay">
-        <form class="card__form" id="form">
+      <div class="popup__card-overlay">
+        <div class="popup__card-container" id="card-form-container">
           <img
-            class="card__close-btn"
+            class="popup__close"
             src="./images/close-icon.png"
             alt="close-icon"
-            id="cerrar"
           />
-          <h2 class="card__form-title">Nuevo lugar</h2>
-          <fieldset class="card__form-container">
-            <label for="card__add-title" class="card__form-label">
-              <input
-                type="text"
-                class="card__form-item"
-                id="card__add-title"
-                placeholder="Título"
-                minlength="2"
-                maxlength="30"
-                required
-              />
-              <span class="card__form-error-msg"></span>
-            </label>
-            <label for="card__form-link" class="card__form-label">
-              <input
-                type="url"
-                class="card__form-item"
-                id="card__form-link"
-                placeholder="Enlace a la imagen"
-                required
-              />
-              <span class="card__form-error-msg"></span>
-            </label>
-          </fieldset>
-          <button type="submit" class="card__form-button">Crear</button>
-        </form>
+          <form class="popup__form" novalidate>
+            <h2 class="popup__title">Nuevo lugar</h2>
+            <fieldset class="popup__form">
+              <label for="card__add-title" class="popup__form-label">
+                <input
+                  type="text"
+                  id="card__add-title"
+                  class="popup__form-item"
+                  placeholder="Título"
+                  minlength="2"
+                  maxlength="30"
+                  required
+                />
+                <span class="popup__form-error-msg"></span>
+              </label>
+              <label for="card__form-link" class="popup__form-label">
+                <input
+                  type="url"
+                  id="card__form-link"
+                  class="popup__form-item"
+                  placeholder="Enlace a la imagen"
+                  required
+                />
+                <span class="popup__form-error-msg"></span>
+              </label>
+            </fieldset>
+            <button type="submit" class="popup__btn">Crear</button>
+          </form>
+        </div>
       </div>
 
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
+
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
