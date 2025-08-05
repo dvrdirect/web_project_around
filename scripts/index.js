@@ -7,8 +7,6 @@ const closeBtn = popupProfile.querySelector(".popup__close");
 
 function openPopupProfile() {
   popupProfile.classList.add("popup__overlay_active");
-  const form = popupProfile.querySelector("form");
-  isValid(form);
 }
 
 function closePopupProfile() {
@@ -90,8 +88,6 @@ const addButton = document.querySelector(".profile__add-btn");
 
 function openPopupCard() {
   cardForm.classList.add("popup__card-overlay_active");
-  const form = cardForm.querySelector("form");
-  isValid(form);
 }
 function closePopupCard() {
   cardForm.classList.remove("popup__card-overlay_active");
