@@ -66,10 +66,11 @@
 
 .card__content {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 25px 15px 31px 21px;
   background-color: white;
+  position: relative;
 }
 
 .card__title {
@@ -83,6 +84,11 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 190px;
+  text-align: center;
+  flex-grow: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0.5px 0 0 currentColor;
 }
 
 .card__like-button {
@@ -91,12 +97,13 @@
   cursor: pointer;
   width: 22px;
   height: 19px;
-  transition: opacity 0.3s ease;
   flex-shrink: 0;
   padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  right: 15px;
 }
 
 .card__like-button:hover {
@@ -110,7 +117,7 @@
 }
 
 .card__like-button_active img {
-  content: url("../Images/llike-on.png");
+  content: url("../images/llike-on.png");
 }
 
 @media screen and (max-width: 1024px) {
