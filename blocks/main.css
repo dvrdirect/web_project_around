@@ -1,24 +1,3 @@
-body {
-  background-color: black;
-  font-family: "inter";
-}
 .content {
-  display: flex;
-  padding-top: 50px;
-  justify-content: center;
-  flex-direction: column;
-}
-.page {
-  padding: 0 150px;
-  margin: 0;
-}
-@media (max-width: 576px) {
-  .page {
-    padding: 0;
-  }
-}
-@media (max-width: 500px) {
-  .page {
-    overflow: hidden;
-  }
+  padding-top: 35px;
 }

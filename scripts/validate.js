@@ -1,5 +1,3 @@
-
-
 function enableValidation(config) {
   const forms = document.querySelectorAll(config.formSelector);
 
@@ -78,5 +76,3 @@ function enableValidation(config) {
     });
   });
 }
-
-// Ejemplo de uso:

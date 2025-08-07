@@ -1,13 +1,27 @@
-.header {
-  display: flex;
-  justify-items: center;
-  border-bottom: 1px solid grey;
+body {
+  background-color: black;
 }
-.logo {
+
+.page {
+  padding: 0 150px;
+  margin: 0;
+}
+
+.header__logo {
   padding: 35px 0;
 }
-@media (max-width: 576px) {
-  .logo {
-    padding-left: 35px;
+
+.header {
+  border-bottom: 1px solid white;
+}
+
+/* Responsive design para header */
+@media screen and (max-width: 590px) {
+  .page {
+    padding: 0 20px;
+  }
+
+  .header__logo {
+    padding: 25px 0;
   }
 }

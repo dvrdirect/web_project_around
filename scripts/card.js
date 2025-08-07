@@ -1,0 +1,117 @@
+class Card {
+  constructor(name, link, templateSelector = "#card-template") {
+    this._name = name;
+    this._link = link;
+    this._templateSelector = templateSelector;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+      .querySelector(this._templateSelector)
+      .content.querySelector(".card")
+      .cloneNode(true);
+
+    return cardElement;
+  }
+
+  _setEventListeners() {
+    this._element
+      .querySelector(".card__like-button")
+      .addEventListener("click", () => {
+        this._handleLikeClick();
+      });
+
+    this._element
+      .querySelector(".card__delete-button")
+      .addEventListener("click", () => {
+        this._handleDeleteClick();
+      });
+
+    this._element
+      .querySelector(".card__image")
+      .addEventListener("click", () => {
+        this._handleImageClick();
+      });
+  }
+
+  _handleLikeClick() {
+    this._element
+      .querySelector(".card__like-button")
+      .classList.toggle("card__like-button_active");
+  }
+
+  _handleDeleteClick() {
+    this._element.remove();
+    this._element = null;
+  }
+
+  _handleImageClick() {
+    const overlay = document.getElementById("image-overlay");
+    const overlayImage = overlay.querySelector(".image-overlay__image");
+    const overlayCaption = overlay.querySelector(".image-overlay__caption");
+
+    overlayImage.src = this._link;
+    overlayImage.alt = this._name;
+    overlayCaption.textContent = this._name;
+
+    overlayImage.onload = () => {
+      if (overlayImage.naturalWidth < 400 || overlayImage.naturalHeight < 300) {
+        overlayImage.style.minWidth = "400px";
+        overlayImage.style.minHeight = "300px";
+        overlayImage.style.width = "auto";
+        overlayImage.style.height = "auto";
+      } else {
+        overlayImage.style.minWidth = "";
+        overlayImage.style.minHeight = "";
+        overlayImage.style.width = "";
+        overlayImage.style.height = "";
+      }
+    };
+
+    overlay.classList.add("image-overlay_opened");
+
+    console.log("Imagen abierta en overlay:", this._name);
+  }
+
+  generateCard() {
+    this._element = this._getTemplate();
+    this._setEventListeners();
+
+    this._element.querySelector(".card__image").src = this._link;
+    this._element.querySelector(".card__image").alt = this._name;
+    this._element.querySelector(".card__title").textContent = this._name;
+
+    return this._element;
+  }
+}
+
+function createCard(name, link) {
+  const card = new Card(name, link);
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
+// Renderizar tarjetas iniciales
+function renderInitialCards() {
+  const cardsContainer = document.querySelector(".cards");
+
+  const card1 = new Card("Valle de Yosemite", "./Images/elements1.jpg");
+  const card2 = new Card("Lago Louise", "./Images/elements2.png");
+  const card3 = new Card("Montañas Calvas", "./Images/montañas-calvas.png");
+  const card4 = new Card("Latemar", "./Images/elements3.png");
+  const card5 = new Card(
+    "Parque Nacional de la Vanoise",
+    "./Images/elements5.png"
+  );
+  const card6 = new Card("Lago di Braies", "./Images/elements6.png");
+
+  cardsContainer.appendChild(card1.generateCard());
+  cardsContainer.appendChild(card2.generateCard());
+  cardsContainer.appendChild(card3.generateCard());
+  cardsContainer.appendChild(card4.generateCard());
+  cardsContainer.appendChild(card5.generateCard());
+  cardsContainer.appendChild(card6.generateCard());
+}
+
+export default Card;
+export { createCard, renderInitialCards };

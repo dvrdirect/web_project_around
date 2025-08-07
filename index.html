@@ -1,218 +1,126 @@
 <!DOCTYPE html>
-<html lang="es-MX">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Daniel Villagómez" />
-    <meta name="description" content="Around photo web page" />
-    <meta name="keywords" content="photo-gallery, web-page" />
     <title>Around</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="author" content="Daniel Villagomez" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./page/index.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
       rel="stylesheet"
     />
-
-    <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body>
     <div class="page">
       <header class="header">
         <img
-          class="logo"
-          src="./images/around-logo.png"
-          alt="around-the-us-logo"
+          src="./Images/around-logo.png"
+          alt="Logo de Around"
+          class="header__logo"
         />
       </header>
       <main class="content">
         <section class="profile">
-          <img
-            class="profile__pic"
-            src="./images/jaques.png"
-            alt="jaques-pic"
-          />
-          <div class="profile__info">
-            <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
-            <p class="profile__ocp" id="profile-ocupation">Explorador</p>
-            <button class="profile__edit-btn"></button>
+          <div class="profile__container">
+            <img
+              src="./Images/jaques.png"
+              alt="Foto de perfil"
+              class="profile__avatar"
+            />
+            <div class="profile__info">
+              <h1 class="profile__name">Jacques Cousteau</h1>
+              <p class="profile__description">Explorador</p>
+              <img
+                src="./Images/edit.png"
+                alt="Editar perfil"
+                class="profile__button profile__button--edit"
+              />
+            </div>
+            <img
+              src="./Images/add.png"
+              alt="Agregar contenido"
+              class="profile__button profile__button--add"
+            />
           </div>
-          <button class="profile__add-btn"></button>
         </section>
-        <section class="elements">
-          <div class="elements__container">
-            <!--<img
-              class="elements__pic-1"
-              src="./images/Rectangle.png"
-              alt="Rectangle"
-            />
-            <div class="elements__yosemite-text-box">
-              <p class="elements__yosemite-text">Valle de Yosemite</p>
-              <button class="elements__like-btn"></button>
-            </div>
-            <img
-              class="elements__pic-1"
-              src="./images/elements1.jpg"
-              alt="Yosemite"
-            />
-            <img
-              class="elements__pic-2"
-              src="./images/Rectangle.png"
-              alt="Rectangle"
-            />
-            <div class="elements__louise-text-box">
-              <p class="elements__louise-text">Lago Louise</p>
-              <button class="elements__like-btn"></button>
-            </div>
-            <img
-              class="elements__pic-2"
-              src="./images/elements5.png"
-              alt="louise"
-            />
-            <img
-              class="elements__pic-3"
-              src="./images/Rectangle.png"
-              alt="Rectangle"
-            />
-            <div class="elements__calvas-text-box">
-              <p class="elements__calvas-text">Montañas Calvas</p>
-              <button class="elements__like-btn"></button>
-            </div>
-            <img
-              class="elements__pic-3"
-              src="./images/montañas-calvas.png"
-              alt="montañas-calvas"
-            />
-            <img
-              class="elements__pic-4"
-              src="./images/Rectangle.png"
-              alt="Rectangle"
-            />
-            <div class="elements__latemar-text-box">
-              <p class="elements__latemar-text">Latemar</p>
-              <button class="elements__like-btn"></button>
-            </div>
-            <img
-              class="elements__pic-4"
-              src="./images/elements3.png"
-              alt="elements4"
-            />
-            <img
-              class="elements__pic-5"
-              src="./images/Rectangle.png"
-              alt="Rectangle"
-            />
-            <div class="elements__vanois-text-box">
-              <p class="elements__vanois-text">Vanois National ...</p>
-              <button class="elements__like-btn"></button>
-            </div>
-            <img
-              class="elements__pic-5"
-              src="./images/elements2.png"
-              alt="elements5"
-            />
-            <img
-              class="elements__pic-6"
-              src="./images/Rectangle.png"
-              alt="Rectangle"
-            />
-            <div class="elements__braies-text-box">
-              <p class="elements__braies-text">
-                Lago di Braies
-                <button class="elements__like-btn"></button>
-              </p>
-            </div>
 
-            <img
-              class="elements__pic-6"
-              src="./images/elements6.png"
-              alt="elements6"
-            />-->
-          </div>
-          <div class="elements__zoom-overlay"></div>
-        </section>
+        <section class="cards"></section>
       </main>
-      <div class="popup__overlay" id="popup-overlay">
-        <div class="popup__container" id="formulario">
-          <img
-            class="popup__close"
-            src="./images/close-icon.png"
-            alt="close-icon"
-          />
-          <form class="popup__form" novalidate>
-            <h2 class="popup__title">Editar Perfil</h2>
-            <fieldset class="popup__form">
-              <label for="nombre" class="popup__form-label">
-                <input
-                  type="text"
-                  id="nombre"
-                  class="popup__form-item"
-                  placeholder="Nombre"
-                  minlength="2"
-                  maxlength="40"
-                  required
-                />
-                <span class="popup__form-error-msg"></span>
-              </label>
-              <label for="about" class="popup__form-label">
-                <input
-                  type="text"
-                  id="about"
-                  class="popup__form-item"
-                  placeholder="Acerca de mí"
-                  minlength="2"
-                  maxlength="200"
-                  required
-                />
-                <span class="popup__form-error-msg"></span>
-              </label>
-            </fieldset>
-            <button type="submit" class="popup__btn">Guardar</button>
-          </form>
-        </div>
-      </div>
-      <div class="popup__card-overlay">
-        <div class="popup__card-container" id="card-form-container">
-          <img
-            class="popup__close"
-            src="./images/close-icon.png"
-            alt="close-icon"
-          />
-          <form class="popup__form" novalidate>
-            <h2 class="popup__title">Nuevo lugar</h2>
-            <fieldset class="popup__form">
-              <label for="card__add-title" class="popup__form-label">
-                <input
-                  type="text"
-                  id="card__add-title"
-                  class="popup__form-item"
-                  placeholder="Título"
-                  minlength="2"
-                  maxlength="30"
-                  required
-                />
-                <span class="popup__form-error-msg"></span>
-              </label>
-              <label for="card__form-link" class="popup__form-label">
-                <input
-                  type="url"
-                  id="card__form-link"
-                  class="popup__form-item"
-                  placeholder="Enlace a la imagen"
-                  required
-                />
-                <span class="popup__form-error-msg"></span>
-              </label>
-            </fieldset>
-            <button type="submit" class="popup__btn">Crear</button>
-          </form>
-        </div>
-      </div>
 
-      <footer class="footer">© 2024 Around The U.S.</footer>
+      <footer class="footer">
+        <p class="footer__text">&copy; 2024 Around The U.S.</p>
+      </footer>
     </div>
 
-    <script src="./scripts/index.js"></script>
-    <script src="./scripts/validate.js"></script>
+    <!-- Templates -->
+    <template id="popup-template">
+      <div class="popup">
+        <div class="popup__container">
+          <button class="popup__close" type="button">
+            <img src="./Images/close-icon.png" alt="Cerrar" />
+          </button>
+          <h2 class="popup__title">Editar perfil</h2>
+          <form class="popup__form">
+            <input
+              type="text"
+              class="popup__input popup__input--name"
+              placeholder="Nombre"
+              name="name"
+              minlength="2"
+              maxlength="40"
+              required
+            />
+            <span class="popup__error" id="name-error"></span>
+            <input
+              type="text"
+              class="popup__input popup__input--description"
+              placeholder="Acerca de mí"
+              name="description"
+              minlength="2"
+              maxlength="200"
+              required
+            />
+            <span class="popup__error" id="description-error"></span>
+            <button type="submit" class="popup__submit popup__submit_disabled">
+              Guardar
+            </button>
+          </form>
+        </div>
+      </div>
+    </template>
+
+    <template id="card-template">
+      <article class="card">
+        <div class="card__image-container">
+          <img class="card__image" src="" alt="" />
+          <button class="card__delete-button" type="button">
+            <img src="./Images/botonDeletee.png" alt="Eliminar" />
+          </button>
+        </div>
+        <div class="card__content">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button" type="button">
+            <img src="./Images/like.png" alt="Me gusta" />
+          </button>
+        </div>
+      </article>
+    </template>
+
+    <!-- Overlay para mostrar imagen en tamaño completo -->
+    <div class="image-overlay" id="image-overlay">
+      <div class="image-overlay__container">
+        <button class="image-overlay__close" type="button">
+          <img src="./Images/close-icon.png" alt="Cerrar" />
+        </button>
+        <img class="image-overlay__image" src="" alt="" />
+        <p class="image-overlay__caption"></p>
+      </div>
+    </div>
+
+    <script type="module" src="Script/utils.js"></script>
+    <script type="module" src="Script/formvalidator.js"></script>
+    <script type="module" src="Script/card.js"></script>
+    <script type="module" src="Script/index.js"></script>
   </body>
 </html>
