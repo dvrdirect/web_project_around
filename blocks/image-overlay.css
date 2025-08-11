@@ -27,17 +27,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .image-overlay__close {
   position: absolute;
-  top: -45px;
-  right: -45px;
+  top: -40px;
+  right: -40px;
   background: transparent;
   border: none;
   cursor: pointer;
   width: 32px;
   height: 32px;
+  z-index: 10;
   transition: opacity 0.3s ease;
 }
 
@@ -79,23 +81,23 @@
 }
 
 /* Responsive para overlay */
+
 @media screen and (max-width: 768px) {
   .image-overlay__close {
-    top: -35px;
-    right: -35px;
-    width: 24px;
-    height: 24px;
+    top: -24px;
+    right: -24px;
+    width: 28px;
+    height: 28px;
   }
 
   .image-overlay__container {
     max-width: 95vw;
     max-height: 95vh;
-    padding: 0 10px;
   }
 
   .image-overlay__image {
     max-height: 70vh;
-    min-width: 280px;
-    min-height: 200px;
+    min-width: 160px;
+    min-height: 100px;
   }
 }

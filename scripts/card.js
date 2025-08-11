@@ -1,7 +1,13 @@
 class Card {
-  constructor(name, link, templateSelector = "#card-template") {
+  constructor(
+    name,
+    link,
+    handleCardClick,
+    templateSelector = "#card-template"
+  ) {
     this._name = name;
     this._link = link;
+    this._handleCardClick = handleCardClick;
     this._templateSelector = templateSelector;
   }
 
@@ -30,7 +36,11 @@ class Card {
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._handleImageClick();
+        if (typeof this._handleCardClick === "function") {
+          this._handleCardClick(this._link, this._name);
+        } else {
+          this._handleImageClick();
+        }
       });
   }
 
@@ -85,25 +95,42 @@ class Card {
   }
 }
 
-function createCard(name, link) {
-  const card = new Card(name, link);
+function createCard(name, link, handleCardClick) {
+  const card = new Card(name, link, handleCardClick);
   const cardElement = card.generateCard();
   return cardElement;
 }
 
 // Renderizar tarjetas iniciales
-function renderInitialCards() {
+function renderInitialCards(handleCardClick) {
   const cardsContainer = document.querySelector(".cards");
 
-  const card1 = new Card("Valle de Yosemite", "./Images/elements1.jpg");
-  const card2 = new Card("Lago Louise", "./Images/elements2.png");
-  const card3 = new Card("Montañas Calvas", "./Images/montañas-calvas.png");
-  const card4 = new Card("Latemar", "./Images/elements3.png");
+  const card1 = new Card(
+    "Valle de Yosemite",
+    "./Images/elements1.jpg",
+    handleCardClick
+  );
+  const card2 = new Card(
+    "Lago Louise",
+    "./Images/elements2.png",
+    handleCardClick
+  );
+  const card3 = new Card(
+    "Montañas Calvas",
+    "./Images/montañas-calvas.png",
+    handleCardClick
+  );
+  const card4 = new Card("Latemar", "./Images/elements3.png", handleCardClick);
   const card5 = new Card(
     "Parque Nacional de la Vanoise",
-    "./Images/elements5.png"
+    "./Images/elements5.png",
+    handleCardClick
   );
-  const card6 = new Card("Lago di Braies", "./Images/elements6.png");
+  const card6 = new Card(
+    "Lago di Braies",
+    "./Images/elements6.png",
+    handleCardClick
+  );
 
   cardsContainer.appendChild(card1.generateCard());
   cardsContainer.appendChild(card2.generateCard());
