@@ -1,3 +1,17 @@
+<!-- Popup de confirmación para eliminar tarjeta -->
+<div class="popup" id="delete-card-popup">
+  <div class="popup__container">
+    <button class="popup__close" type="button">
+      <img src="./images/close-icon.png" alt="Cerrar" />
+    </button>
+    <h2 class="popup__title">¿Estás seguro/a?</h2>
+    <form class="popup__form" id="delete-card-form">
+      <button type="submit" class="popup__submit" style="margin-top: 24px">
+        Sí
+      </button>
+    </form>
+  </div>
+</div>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -23,11 +37,43 @@
       <main class="content">
         <section class="profile">
           <div class="profile__container">
-            <img
-              src="./images/jaques.png"
-              alt="Foto de perfil"
-              class="profile__avatar"
-            />
+            <div
+              class="profile__avatar-container"
+              style="position: relative; display: inline-block"
+            >
+              <img
+                src="./images/jaques.png"
+                alt="Foto de perfil"
+                class="profile__avatar"
+                id="profile-avatar"
+              />
+              <img
+                src="./images/edit-photo.png"
+                alt="Editar avatar"
+                class="profile__avatar-edit"
+                id="edit-avatar-icon"
+              />
+            </div>
+            <!-- Popup para cambiar avatar -->
+            <div class="popup" id="avatar-popup">
+              <div class="popup__container">
+                <button class="popup__close" type="button">
+                  <img src="./images/close-icon.png" alt="Cerrar" />
+                </button>
+                <h2 class="popup__title">Cambiar foto de perfil</h2>
+                <form class="popup__form" id="avatar-form">
+                  <input
+                    type="url"
+                    class="popup__input"
+                    name="avatar"
+                    placeholder="URL de la imagen de perfil"
+                    required
+                  />
+                  <span class="popup__error" id="avatar-error"></span>
+                  <button type="submit" class="popup__submit">Guardar</button>
+                </form>
+              </div>
+            </div>
 
             <div class="profile__info">
               <h1 class="profile__name">Jacques Cousteau</h1>
@@ -127,7 +173,11 @@
         <div class="card__image-container">
           <img class="card__image" src="" alt="" />
           <button class="card__delete-button" type="button">
-            <img src="./images/botonDeletee.png" alt="Eliminar" />
+            <img
+              class="card__delete-icon"
+              src="./images/trash.png"
+              alt="Eliminar"
+            />
           </button>
         </div>
         <div class="card__content">

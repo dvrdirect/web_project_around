@@ -16,7 +16,6 @@ class Card {
       .querySelector(this._templateSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-
     return cardElement;
   }
 
@@ -79,18 +78,15 @@ class Card {
     };
 
     overlay.classList.add("image-overlay_opened");
-
     console.log("Imagen abierta en overlay:", this._name);
   }
 
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
-
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__image").alt = this._name;
     this._element.querySelector(".card__title").textContent = this._name;
-
     return this._element;
   }
 }
@@ -98,6 +94,11 @@ class Card {
 function createCard(name, link, handleCardClick) {
   const card = new Card(name, link, handleCardClick);
   const cardElement = card.generateCard();
+  // Manejo de error para imágenes rotas
+  const img = cardElement.querySelector(".card__image");
+  img.onerror = () => {
+    img.src = "./images/placeholder.png"; // Usa una imagen de respaldo
+  };
   return cardElement;
 }
 
