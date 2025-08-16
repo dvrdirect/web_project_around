@@ -175,16 +175,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function functionDeleteCard(cardElement, cardId) {
     cardToDelete = { element: cardElement, id: cardId };
-    deleteCardPopup.open(function () {
-      console.log("Intentando eliminar tarjeta con ID:", cardToDelete.id);
+    deleteCardPopup.open();
+  }
+
+  // Lógica para eliminar solo al submit del form de confirmación
+  const deleteForm = document.querySelector("#delete-card-popup .popup__form");
+  if (deleteForm) {
+    deleteForm.addEventListener("submit", function (evt) {
+      evt.preventDefault();
+      if (!cardToDelete) return;
       api
         .deleteCard(cardToDelete.id)
         .then((res) => {
-          console.log("Respuesta de la API al eliminar:", res);
           cardToDelete.element.remove();
         })
         .catch((err) => {
-          console.error("Error al eliminar la tarjeta de la API:", err);
           alert(
             "No se pudo eliminar la tarjeta de la API: " +
               (err?.message || JSON.stringify(err))

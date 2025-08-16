@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Around</title>
+    <meta name="author" content="Daniel Villagomez" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          src="./images/around-logo.png"
+          alt="Logo de Around"
+          class="header__logo"
+        />
+      </header>
+      <main class="content">
+        <section class="profile">
+          <div class="profile__container">
+            <div
+              class="profile__avatar-container"
+              style="position: relative; display: inline-block"
+            >
+              <img
+                src="./images/jaques.png"
+                alt="Foto de perfil"
+                class="profile__avatar"
+                id="profile-avatar"
+              />
+              <img
+                src="./images/edit-photo.png"
+                alt="Editar avatar"
+                class="profile__avatar-edit"
+                id="edit-avatar-icon"
+              />
+            </div>
+            <!-- Popup para cambiar avatar -->
+            <div class="popup" id="avatar-popup">
+              <div class="popup__container">
+                <button class="popup__close" type="button">
+                  <img src="./images/close-icon.png" alt="Cerrar" />
+                </button>
+                <h2 class="popup__title">Cambiar foto de perfil</h2>
+                <form class="popup__form" id="avatar-form">
+                  <input
+                    type="url"
+                    class="popup__input"
+                    name="avatar"
+                    placeholder="URL de la imagen de perfil"
+                    required
+                  />
+                  <span class="popup__error" id="avatar-error"></span>
+                  <button type="submit" class="popup__submit">Guardar</button>
+                </form>
+              </div>
+            </div>
+
+            <div class="profile__info">
+              <h1 class="profile__name">Jacques Cousteau</h1>
+              <p class="profile__description">Explorador</p>
+              <img
+                src="./images/edit.png"
+                alt="Editar perfil"
+                class="profile__button profile__button--edit"
+              />
+            </div>
+            <img
+              src="./images/add.png"
+              alt="Agregar contenido"
+              class="profile__button profile__button--add"
+            />
+          </div>
+        </section>
+
+        <section class="cards"></section>
+      </main>
+
+      <footer class="footer">
+        <p class="footer__text">&copy; 2024 Around The U.S.</p>
+      </footer>
+    </div>
+
+    <!-- Popup de perfil instanciado en el DOM -->
+    <div class="popup" id="profile-popup">
+      <div class="popup__container">
+        <button class="popup__close" type="button">
+          <img src="./images/close-icon.png" alt="Cerrar" />
+        </button>
+        <h2 class="popup__title">Editar perfil</h2>
+        <form class="popup__form">
+          <input
+            type="text"
+            class="popup__input popup__input--name"
+            placeholder="Nombre"
+            name="name"
+            minlength="2"
+            maxlength="40"
+            required
+          />
+          <span class="popup__error" id="name-error"></span>
+          <input
+            type="text"
+            class="popup__input popup__input--description"
+            placeholder="Acerca de mí"
+            name="description"
+            minlength="2"
+            maxlength="200"
+            required
+          />
+          <span class="popup__error" id="description-error"></span>
+          <button type="submit" class="popup__submit popup__submit_disabled">
+            Guardar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Popup de tarjeta instanciado en el DOM -->
+    <div class="popup" id="card-popup">
+      <div class="popup__container">
+        <button class="popup__close" type="button">
+          <img src="./images/close-icon.png" alt="Cerrar" />
+        </button>
+        <h2 class="popup__title">Nueva tarjeta</h2>
+        <form class="popup__form">
+          <input
+            type="text"
+            class="popup__input popup__input--title"
+            placeholder="Título"
+            name="title"
+            minlength="2"
+            maxlength="30"
+            required
+          />
+          <span class="popup__error" id="title-error"></span>
+          <input
+            type="url"
+            class="popup__input popup__input--link"
+            placeholder="Enlace de la imagen"
+            name="link"
+            required
+          />
+          <span class="popup__error" id="link-error"></span>
+          <button type="submit" class="popup__submit popup__submit_disabled">
+            Crear
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <template id="card-template">
+      <article class="card">
+        <div class="card__image-container">
+          <img class="card__image" src="" alt="" />
+          <button class="card__delete-button" type="button">
+            <img
+              class="card__delete-icon"
+              src="./images/trash.png"
+              alt="Eliminar"
+            />
+          </button>
+        </div>
+        <div class="card__content">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button" type="button">
+            <img src="./images/like.png" alt="Me gusta" />
+          </button>
+        </div>
+      </article>
+    </template>
+
+    <!-- Overlay para mostrar imagen en tamaño completo -->
+    <div class="image-overlay" id="image-overlay">
+      <div class="image-overlay__container">
+        <button class="image-overlay__close" type="button">
+          <img src="./images/close-icon.png" alt="Cerrar" />
+        </button>
+        <img class="image-overlay__image" src="" alt="" />
+        <p class="image-overlay__caption"></p>
+      </div>
+    </div>
+    <!-- Popup de confirmación para eliminar tarjeta -->
+    <div class="popup" id="delete-card-popup">
+      <div class="popup__container">
+        <button class="popup__close" type="button">
+          <img src="./images/close-icon.png" alt="Cerrar" />
+        </button>
+        <h2 class="popup__title">¿Estás seguro/a?</h2>
+        <form class="popup__form" id="delete-card-form">
+          <button type="submit" class="popup__submit" style="margin-top: 24px">
+            Sí
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script type="module" src="scripts/utils.js"></script>
+    <script type="module" src="scripts/formvalidator.js"></script>
+    <script type="module" src="scripts/card.js"></script>
+    <script type="module" src="scripts/index.js"></script>
+  </body>
+</html>
